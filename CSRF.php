@@ -37,6 +37,14 @@ class CSRF extends Module
 	}
 
 	/**
+	 * Gets the CSRF token
+	 */
+	public function getToken()
+	{
+		return ($_SESSION['csrf'] ?? '');
+	}
+
+	/**
 	 * @param array $request
 	 * @param string $rule
 	 * @return array
