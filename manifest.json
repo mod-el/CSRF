@@ -1,0 +1,6 @@
+{
+	"name": "CSRF",
+	"description": "Simple tools to prevent CSRF attacks",
+	"version": "0.1.0",
+	"dependencies": {}
+}
