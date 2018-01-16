@@ -11,6 +11,8 @@ class CSRF extends Module
 	{
 		if (!isset($_SESSION['csrf']))
 			$_SESSION['csrf'] = md5(uniqid(rand(), true));
+
+		$this->model->addJS('csrf.js');
 	}
 
 	/**
@@ -32,5 +34,16 @@ class CSRF extends Module
 	public function csrfInput()
 	{
 		echo '<input type="hidden" name="c_id" value="' . entities($_SESSION['csrf']) . '" />';
+	}
+
+	/**
+	 * @param array $request
+	 * @param string $rule
+	 * @return array
+	 */
+	public function getController(array $request, string $rule){
+		return [
+			'controller' => 'CSRF',
+		];
 	}
 }
