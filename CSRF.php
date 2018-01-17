@@ -12,7 +12,9 @@ class CSRF extends Module
 		if (!isset($_SESSION['csrf']))
 			$_SESSION['csrf'] = md5(uniqid(rand(), true));
 
-		$this->model->addJS('csrf.js');
+		$this->model->addJS('csrf.js', [
+			'cacheable' => false,
+		]);
 	}
 
 	/**
