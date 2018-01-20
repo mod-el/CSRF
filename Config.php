@@ -2,7 +2,8 @@
 
 use Model\Core\Module_Config;
 
-class Config extends Module_Config {
+class Config extends Module_Config
+{
 	public $configurable = false;
 
 	/**
