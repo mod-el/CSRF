@@ -8,7 +8,7 @@ class CSRFController extends Controller {
 	}
 
 	public function index(){
-		?>var c_id = '<?=entities($_SESSION['csrf'] ?? '')?>';
+		?>var c_id = '<?=entities($this->model->_CSRF->getToken())?>';
 <?php
 		die();
 	}

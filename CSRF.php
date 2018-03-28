@@ -9,9 +9,6 @@ class CSRF extends Module
 	 */
 	public function init(array $options)
 	{
-		if (!isset($_SESSION['csrf']))
-			$_SESSION['csrf'] = md5(uniqid(rand(), true));
-
 		$this->model->addJS('csrf.js?' . mt_rand(1, 1000), [
 			'cacheable' => false,
 		]);
@@ -22,9 +19,9 @@ class CSRF extends Module
 	 *
 	 * @return bool
 	 */
-	public function checkCsrf()
+	public function checkCsrf(): bool
 	{
-		if (isset($_POST['c_id']) and $_POST['c_id'] === $_SESSION['csrf'])
+		if (isset($_POST['c_id']) and $_POST['c_id'] === $this->getToken('CSRF'))
 			return true;
 		else
 			return false;
@@ -35,15 +32,15 @@ class CSRF extends Module
 	 */
 	public function csrfInput()
 	{
-		echo '<input type="hidden" name="c_id" value="' . entities($_SESSION['csrf']) . '" />';
+		echo '<input type="hidden" name="c_id" value="' . entities($this->getToken('CSRF')) . '" />';
 	}
 
 	/**
 	 * Gets the CSRF token
 	 */
-	public function getToken()
+	public function getToken(): string
 	{
-		return ($_SESSION['csrf'] ?? '');
+		return $this->model->_RandToken->getToken('CSRF');
 	}
 
 	/**
