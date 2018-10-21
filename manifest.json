@@ -3,6 +3,7 @@
 	"description": "Simple tools to prevent CSRF attacks",
 	"version": "0.1.0",
 	"dependencies": {
+		"Core": ">=2.7.1",
 		"RandToken": ">=0.1.0"
 	}
 }
