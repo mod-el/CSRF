@@ -48,7 +48,7 @@ class CSRF extends Module
 	 * @param string $rule
 	 * @return array
 	 */
-	public function getController(array $request, string $rule)
+	public function getController(array $request, string $rule): ?array
 	{
 		return [
 			'controller' => 'CSRF',
