@@ -9,7 +9,7 @@ class CSRF extends Module
 	 */
 	public function init(array $options)
 	{
-		$this->model->addJS('csrf.js?' . mt_rand(1, 1000), [
+		$this->model->addJS('csrf.js?' . time(), [
 			'cacheable' => false,
 		]);
 	}
