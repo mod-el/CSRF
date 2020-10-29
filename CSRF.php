@@ -21,7 +21,7 @@ class CSRF extends Module
 	 */
 	public function checkCsrf(): bool
 	{
-		if (isset($_POST['c_id']) and $_POST['c_id'] === $this->getToken('CSRF'))
+		if (isset($_REQUEST['c_id']) and $_REQUEST['c_id'] === $this->getToken())
 			return true;
 		else
 			return false;
@@ -32,7 +32,7 @@ class CSRF extends Module
 	 */
 	public function csrfInput()
 	{
-		echo '<input type="hidden" name="c_id" value="' . entities($this->getToken('CSRF')) . '" />';
+		echo '<input type="hidden" name="c_id" value="' . entities($this->getToken()) . '" />';
 	}
 
 	/**
