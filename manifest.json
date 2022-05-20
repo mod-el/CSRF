@@ -1,7 +1,7 @@
 {
 	"name": "CSRF",
-	"description": "Simple tools to prevent CSRF attacks",
-	"version": "0.2.0",
+	"description": "DEPRECATED (use model/csrf)",
+	"version": "0.3.0",
 	"dependencies": {
 		"Core": ">=2.10.0",
 		"RandToken": ">=0.2.0"
